@@ -1,7 +1,7 @@
 # Dead Cells Mods documentation 
 ### 中英翻譯版本
 
-由 lamaJL1126 使用 DeepL 機翻 官方文檔(ModsDoc.pdf)，並再加以修飾、校對，以及添加更多的具體教學。
+由 lamaJL1126 使用 DeepL 和 ChatGPT 共同協助 翻譯 官方文檔(ModsDoc.pdf)，並個人再加以修飾、校對，以及添加更多的具體教學。新添的教學多加註於中文內容中，或修改部分翻譯，使其更易於使用。
 
 內容為中英對照，以方便操作時可以與官方文檔交互確認。
 
@@ -17,7 +17,7 @@ This document explains in detail how the game data workflow works, how to manipu
 There is a major difference between the flow for altering data and creating some scripts. The process of creating scripts for a mod is more straightforward but requires more technical skills.
 
 ## 概要
-更改資料和重新建立有很大的不同，重新建立流程並編寫程式比較直接，但難度較高。
+在修改數據和編寫腳本的流程之間存在一個主要區別。為模組編寫腳本的過程更簡單直接，但難度較高。
 
 
 - ### Brief presentation of tech and production flows to modify data
@@ -34,9 +34,14 @@ There is a major difference between the flow for altering data and creating some
   ### 修改數據的方式和流程概要
   遊戲使用一個 pak 檔案來儲存所有資料。可以在 Dead Cells 安裝目錄的根目錄中看到「res.pak」，它內含遊戲所使用的所有資料。
 
-  若要修改遊戲中的任何一筆資料，你必須有權限開啟並擷取此 pak 中的每個檔案。這是「PAKTool.exe」的目的之一。
+  若要修改遊戲中的任何一筆資料，你必須有權限開啟並擷取此 pak 中的每個檔案。這是「PAKTool」的用途之一。
 
-  此遊戲的 mod 運作方式較為另類，稱之為「mod pak」的方式，是以覆蓋原始 pak 中的資料運行。mod 套件在執行時載入，其中包含的每個檔案都會取代原始檔案，反之若有未包含的檔案則沿用原始檔案。CDB 檔案和 Tiled 的房間版本會有少數例外，詳細資訊，參閱 CDBTool & Rooms。
+  此遊戲的 mod 運作方式較為另類，稱之為「mod pak」的方式，是以覆蓋原始 pak 中的資料運行。mod 套件在執行時載入，其中包含的每個檔案都會取代原始檔案，反之若有未包含的檔案則沿用原始檔案。「CDB 檔案」和「使用 Tiled 進行關卡修改」會有少數例外，詳細資訊，參閱 CDBTool & Rooms。
+
+  因此、若要製作一個 mod，你必須從「res.pak」中獲得原始檔案，修改獲得的原始檔案，然後再重建一個 mod 的 pak 檔案。此 mod pak 將使用「PAKTool」建立，並且僅包含 mod 中從原始「res.pak」修改的檔案 (以盡可能減輕檔案大小)。
   
+  要運行這些工具(「PAKTool」~)，你需要安裝「.NET Framework」版本 4.5.2 或更高版本（如果你的電腦尚未安裝）。你可以在 Microsoft 的網站上找到它：https://www.microsoft.com/fr-fr/download/details.aspx?id=42642
 
-- ### 
+  
+- ### Brief presentation of scripting flow
+  The game now supports scripting for creating level structures, defining level info and mob roster in a level. The flow is very simple, when a mod is activated, it checks for the presence of a directory ./Script/Struct/ in the mod’s directory and tries to load scripts present in it. It’s compatible with some res.pak modifications (you can change the res.pak and have scripts in the same mod).
