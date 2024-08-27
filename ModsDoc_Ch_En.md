@@ -32,8 +32,11 @@ There is a major difference between the flow for altering data and creating some
   To run the tools, you need to install (or already have installed the .NET Framework version 4.5.2 or above. You can find it on Microsoft site here : https://www.microsoft.com/fr-fr/download/details.aspx?id=42642
 
   ### 修改數據的方式和流程概要
-    遊戲使用一個 pak 檔案來儲存所有資料。可以在 Dead Cells 安裝目錄的根目錄中看到「res.pak」，它內含遊戲所使用的所有資料。
+  遊戲使用一個 pak 檔案來儲存所有資料。可以在 Dead Cells 安裝目錄的根目錄中看到「res.pak」，它內含遊戲所使用的所有資料。
 
-    若要修改遊戲中的任何一筆資料，你必須有權限開啟並擷取此 pak 中的每個檔案。這是「PAKTool.exe」的目的之一。
-    
+  若要修改遊戲中的任何一筆資料，你必須有權限開啟並擷取此 pak 中的每個檔案。這是「PAKTool.exe」的目的之一。
+
+  此遊戲的 mod 運作方式較為另類，稱之為「mod pak」的方式，是以覆蓋原始 pak 中的資料運行。mod 套件在執行時載入，其中包含的每個檔案都會取代原始檔案，反之若有未包含的檔案則沿用原始檔案。CDB 檔案和 Tiled 的房間版本會有少數例外，詳細資訊，參閱 CDBTool & Rooms。
   
+
+- ### 
