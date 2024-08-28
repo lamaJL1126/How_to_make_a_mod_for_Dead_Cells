@@ -1,7 +1,7 @@
 # Dead Cells Mods documentation 
 ### 中英翻譯版本
 
-由 lamaJL1126 使用 DeepL 和 ChatGPT 共同協助 翻譯 官方文檔(ModsDoc.pdf)，並個人再加以修飾、校對，以及添加更多的具體教學。新添的教學多加註於中文內容中，或修改部分翻譯，使其更易於使用。
+由 lamaJL1126 使用 DeepL 和 ChatGPT 共同協助 翻譯 官方模組文檔(ModsDoc.pdf)，並個人再加以修飾、校對，以及添加更多的具體教學。新添的教學多加註於中文內容中，或修改部分翻譯，使其更易於使用、理解。
 
 內容為中英對照，以方便操作時可以與官方文檔交互確認。
 
@@ -45,3 +45,7 @@ There is a major difference between the flow for altering data and creating some
   
 - ### Brief presentation of scripting flow
   The game now supports scripting for creating level structures, defining level info and mob roster in a level. The flow is very simple, when a mod is activated, it checks for the presence of a directory ./Script/Struct/ in the mod’s directory and tries to load scripts present in it. It’s compatible with some res.pak modifications (you can change the res.pak and have scripts in the same mod).
+  ### 使用腳本定義的方式和流程概要
+  遊戲支援使用腳本來製作關卡結構、定義關卡信息和關卡中生成的敵人。流程概括為，當一個 mod 被加載時，遊戲會先掃描 mod 目錄中是否存在 ./Script/Struct/ 目錄，並嘗試加載其中的腳本。加載的腳本可以與某些「res.pak」修改兼容（你可以在一個 mod 中同時包含修改的「res.pak」和 腳本）。
+
+
