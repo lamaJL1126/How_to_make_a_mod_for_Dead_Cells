@@ -1,6 +1,5 @@
 # Dead Cells Mods documentation 
 ### 中英翻譯版本
-
 由 lamaJL1126 使用 DeepL 和 ChatGPT 共同協助 翻譯 官方模組文檔(ModsDoc.pdf)，並個人再加以修飾、校對，以及添加更多的具體教學。新添的教學多加註於中文內容中，或修改部分翻譯，使其更易於使用、理解。
 
 內容為中英對照，以方便操作時可以與官方文檔交互確認。
@@ -36,16 +35,52 @@ There is a major difference between the flow for altering data and creating some
 
   若要修改遊戲中的任何一筆資料，你必須有權限開啟並擷取此 pak 中的每個檔案。這是「PAKTool」的用途之一。
 
-  此遊戲的 mod 運作方式較為另類，稱之為「mod pak」的方式，是以覆蓋原始 pak 中的資料運行。mod 套件在執行時載入，其中包含的每個檔案都會取代原始檔案，反之若有未包含的檔案則沿用原始檔案。「CDB 檔案」和「使用 Tiled 進行關卡修改」會有少數例外，詳細資訊，參閱 CDBTool & Rooms。
+  此遊戲的 mod 運作方式較為另類，稱之為「mod pak」的方式，是以覆蓋原始 pak 中的資料運行。mod 套件在執行時載入，其中包含的每個檔案都會取代原始檔案，反之若有未包含的檔案則沿用原始檔案。「CDB 檔案」和「使用 Tiled 進行關卡修改」會有少數例外，詳細資訊，參閱「CDBTool & Rooms」。
 
-  因此、若要製作一個 mod，你必須從「res.pak」中獲得原始檔案，修改獲得的原始檔案，然後再重建一個 mod 的 pak 檔案。此 mod pak 將使用「PAKTool」建立，並且僅包含 mod 中從原始「res.pak」修改的檔案 (以盡可能減輕檔案大小)。
+  因此、若要製作一個 mod，你必須從「res.pak」中獲得 原始檔，修改獲得的 原始檔，然後再重建一個 mod 的 pak 檔案。此 mod pak 將使用「PAKTool」建立，並且僅包含 mod 中從原始「res.pak」修改的檔案 (以盡可能減輕檔案大小)。
   
   要運行這些工具(「PAKTool」~)，你需要安裝「.NET Framework」版本 4.5.2 或更高版本（如果你的電腦尚未安裝）。你可以在 Microsoft 的網站上找到它：https://www.microsoft.com/fr-fr/download/details.aspx?id=42642
 
   
 - ### Brief presentation of scripting flow
   The game now supports scripting for creating level structures, defining level info and mob roster in a level. The flow is very simple, when a mod is activated, it checks for the presence of a directory ./Script/Struct/ in the mod’s directory and tries to load scripts present in it. It’s compatible with some res.pak modifications (you can change the res.pak and have scripts in the same mod).
-  ### 使用腳本定義的方式和流程概要
-  遊戲支援使用腳本來製作關卡結構、定義關卡信息和關卡中生成的敵人。流程概括為，當一個 mod 被加載時，遊戲會先掃描 mod 目錄中是否存在 ./Script/Struct/ 目錄，並嘗試加載其中的腳本。加載的腳本可以與某些「res.pak」修改兼容（你可以在一個 mod 中同時包含修改的「res.pak」和 腳本）。
+
+  ### 腳本簡介和運作流程概要
+  遊戲支援使用 腳本 來製作關卡結構、定義關卡信息和關卡中生成的敵人。流程概括為、當一個 mod 被加載時，遊戲會先掃描 mod 中是否存在 ./Script/Struct/ 目錄，並嘗試加載其中的 腳本。加載的 腳本 可以與某些「res.pak」修改兼容（你可以在一個 mod 中同時包含修改的「res.pak」和 腳本 以修改遊戲）。
 
 
+- ### The types of files
+  ### 檔案類型、簡介
+
+  
+  - **res.pak**
+    
+    As stated before, the res.pak is a container for all game files. It’s in the installation root directory. It can be expanded using the PAKTool.
+
+    「res.pak 」它位於安裝根目錄中，是一個包含所有遊戲資料的檔案。可以使用「PAKTool」進行解壓。
+
+
+  - **data.cdb**
+    
+    Data.cdb is a file containing a lot of different things concerning both gameplay and cosmetics. It’s a big JSON file and can be edited with CastleDB. It contains rooms layouts, weapon parameters, fogs color etc...
+
+    「data.cdb」是一個大型的 JSON 檔案，包含了 遊戲玩法 和 外觀 相關的內容，包括房間佈局、武器參數、霧的顏色等。可以使用「CastleDB」進行編輯。
+
+
+  - **.atlas & .png**
+    
+    In Dead Cells, all textures are PNGs and most of them are atlases. An atlas is multiple PNGs merged in one big PNG. In Dead Cells there are (few) standalone PNGs and .png/.atlas pairs. .atlas files contain information on where and how big a given image is stored in the .png. The AtlasTool is here to expand atlases in several “original files” to allow you to modify them and then rebuild the atlas from expanded files.
+
+    在遊戲中所有的材質都是 PNG 檔案(.png)，其中大多是 圖集 (圖集是將多個 PNG 合併為一個大的 PNG 的技術)，但同時也存在部分獨立的 PNG 檔案，以及成對的 PNG 和「.atlas」檔案(「.atlas」定義了相對圖集中的每個圖像儲存位置及大小等信息)。可以使用「AtlasTool」將 圖集 展開為多個 原始檔 以便修改，並將展開後的檔案重新組合成 圖集。
+
+
+  - **.hx**
+    
+    They are script code files. They are loaded and interpreted by the game during different steps like: creating the structure of a level, setting level parameters, generating mob roster, spawning mobs etc.
+
+
+  - **.tmx**
+    
+    Those files are located in tiled/tmx in the expanded pak folder. They contain the data of the rooms in the Tiled tool format. Be careful, the tmx stored in the pak and used by the game is actually a binary file, that can’t be opened with Tiled. In order to edit them, you will have to export them with TmxTool.
+
+    
