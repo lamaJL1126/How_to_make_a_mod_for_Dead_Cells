@@ -114,3 +114,69 @@ There is a major difference between the flow for altering data and creating some
   - Add floor junks
   - Modify parameters in the CDB (except for table “Truelle”)
   - Create script to define a customized level structure, world graph, mob roster
+
+  ### 模組當前可進行的操作
+  包括下列但不限於下列
+  - 更改部分圖集（參見不可更改的圖集列表）
+  - 添加地板上的雜物
+  - 修改 CDB 中的參數（除了「Truelle」表）
+  - 創建腳本來定義自訂的關卡結構、世界圖、敵人列表
+
+
+- ## What you cannot do with mods (current state)
+  All this may change with future releases and the list is non-exhaustive.
+
+  For now you cannot modify some atlases:
+  - atlas/ui.atlas
+  - atlas/fxCommon.atlas
+  - atlas/ui.atlas
+  - atlas/fxCommon.atlas
+  - atlas/fxEnemy.atlas
+  - atlas/fxWeapon.atlas
+  - atlas/fxDisplace.atlas
+  - atlas/gameElements.atlas
+  - atlas/lore.atlas
+
+  For caching reasons, we cannot reload those during runtime and modifying them will result in a no-op
+
+  You cannot modify the table “Truelle” in data.cdb. It will be a no-op too.
+
+  Some parameters in the CDB may have no effect when changed, but there is no exhaustive list at this point.
+
+  Removing lines of separators in the CDB may cause the game to crash.
+
+  Removing entries from atlases may cause the game to crash or graphic bugs (depending on which atlas is concerned).
+
+  Generally removing files or part of files will cause the game to crash at one point or another.
+
+  Language should be added or altered via the existing process: https://steamcommunity.com/games/588650/announcements/detail/1253537422578152950
+
+  ### 模組當前不可進行的操作
+  包括下列但不限於下列，且下列內容都可能因未來版本推出而改變。
+
+  目前無法修改以下圖集：
+  - atlas/ui.atlas
+  - atlas/fxCommon.atlas
+  - atlas/ui.atlas
+  - atlas/fxCommon.atlas
+  - atlas/fxEnemy.atlas
+  - atlas/fxWeapon.atlas
+  - atlas/fxDisplace.atlas
+  - atlas/gameElements.atlas
+  - atlas/lore.atlas
+
+  基於緩存原因，遊戲無法在運行後加載模組時重新加載這些圖集，修改它們將不會產生任何效果(在模組中，由於遊戲啟動後才會加載模組，因此存在於模組中的此類圖集無法修改遊戲中已存在於緩存的原有的圖集)。
+
+  無法修改「data.cdb」中的「Truelle」表，修改將會是無效的。
+
+  修改 CDB 中的某些參數可能不會產生效果，但目前沒有詳細的列表。
+
+  移除 CDB 中的分隔線可能會導致遊戲崩潰。
+
+  從圖集中移除項目可能會導致遊戲崩潰或出現圖形錯誤（依具體圖集而定）。
+
+  正常情況下，移除檔案或移除檔案的一部分最終會導致遊戲崩潰。
+
+  添加或修改語言應通過現有的流程：https://steamcommunity.com/games/588650/announcements/detail/1253537422578152950。
+
+
