@@ -180,3 +180,20 @@ There is a major difference between the flow for altering data and creating some
   添加或修改語言應通過現有的流程：https://steamcommunity.com/games/588650/announcements/detail/1253537422578152950。
 
 
+# Tools list
+
+Except for castleDB, the tools presented are command line tools.
+
+They accept - and / at the start of arguments. Argument names are NOT case sensitive.
+
+Order of arguments is not important (as long as you respect the order -argument <parameter> ):
+
+Example:
+```
+-EXPAND -OUTDIR "C:\Tests\ExpandedAtlas\kingsGuardian\" -ATLAS "C:\Tests\Expanded\atlas\kingsGuardian.atlas"
+```
+is equivalent to
+```
+-ATLAS "C:\Tests\Expanded\atlas\kingsGuardian.atlas" -OUTDIR "C:\Tests\ExpandedAtlas\kingsGuardian\" -EXPAND
+```
+
