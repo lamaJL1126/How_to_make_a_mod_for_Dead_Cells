@@ -103,4 +103,14 @@ There is a major difference between the flow for altering data and creating some
   - 兩個模組修改了相同的檔案(CDB 檔案除外)。
   - 兩個模組修改了 CDB 中的同一行程式。
 
-  模組只能在創建新存檔或從監獄重新開始遊戲時激活。
+  模組只能在創建新存檔或重新開始遊戲時加載。
+
+  每次更新（包含小更新），為了防止遊戲崩潰或損壞存檔，模組會被暫時停用，並且使用模組的當前存檔將會被重置進度（僅重置遊戲進度，不包含永久升級內容）。
+
+
+- ## What you can do with mods (current state)
+  This list is non-exhaustive
+  - Change some atlases (or part of atlases) (see list of unalterable atlases)
+  - Add floor junks
+  - Modify parameters in the CDB (except for table “Truelle”)
+  - Create script to define a customized level structure, world graph, mob roster
