@@ -5,7 +5,7 @@
 內容為中英對照，以方便操作時可以與官方文檔交互確認。
 
 
-# Document purpose 
+# Document purpose
 This document explains in detail how the game data workflow works, how to manipulate its data, create scripts for it and upload mods to the Steam workshop. It’s targeted to people who want to create mods and it explains everything from scratch, step by step. We’ll make the difference between data modifications and scripting. If you already played with the pak and cdb there is probably a lot in here that you already know.
 
 ## 文件目的
@@ -15,7 +15,7 @@ This document explains in detail how the game data workflow works, how to manipu
 # General presentation
 There is a major difference between the flow for altering data and creating some scripts. The process of creating scripts for a mod is more straightforward but requires more technical skills.
 
-# 概要
+## 概要
 在修改數據和編寫腳本的流程之間存在一個主要區別。為模組編寫腳本的過程更簡單直接，但難度較高。
 
 
@@ -30,7 +30,7 @@ There is a major difference between the flow for altering data and creating some
 
   To run the tools, you need to install (or already have installed the .NET Framework version 4.5.2 or above. You can find it on Microsoft site here : https://www.microsoft.com/fr-fr/download/details.aspx?id=42642
 
-  ## 修改數據的方式和流程概要
+  ### 修改數據的方式和流程概要
   遊戲使用一個 pak 檔案來儲存所有資料。可以在 Dead Cells 安裝目錄的根目錄中看到「res.pak」，它內含遊戲所使用的所有資料。
 
   若要修改遊戲中的任何一筆資料，你必須有權限開啟並擷取此 pak 中的每個檔案。這是「PAKTool」的用途之一。
@@ -50,7 +50,7 @@ There is a major difference between the flow for altering data and creating some
 
 
 - ## The types of files
-  ### 檔案類型、簡介
+  ### 檔案類型
 
   
   - ### res.pak
@@ -80,5 +80,27 @@ There is a major difference between the flow for altering data and creating some
   - ### .tmx
     Those files are located in tiled/tmx in the expanded pak folder. They contain the data of the rooms in the Tiled tool format. Be careful, the tmx stored in the pak and used by the game is actually a binary file, that can’t be opened with Tiled. In order to edit them, you will have to export them with TmxTool.
 
-    這類檔案位於展開的 pak 資料夾中的 tiled/tmx 目錄下。檔案以「Tiled」工具(用於修改和創建房間佈局設計的軟體)的格式儲存其中包含房間的數據。要注意的是 pak 中存儲並被遊戲使用的 tmx 檔案實際上是二進制檔案，無法用 Tiled 打開並編輯。要編輯這些檔案，需要先使用「TmxTool」將二進制的 tmx 檔案轉換。
+    這類檔案位於展開的 pak 資料夾中的 tiled/tmx 目錄下。檔案以「Tiled」工具的格式儲存其中包含房間的數據(「Tiled」是一個用於修改和創建房間佈局設計的軟體)。要注意的是 pak 中存儲並被遊戲使用的 tmx 檔案實際上是二進制檔案，無法用 Tiled 打開並編輯。要編輯這些檔案，需要先使用「TmxTool」將二進制的 tmx 檔案轉換。
     
+
+- ## How mods will behave in the game
+  The game supports multiple mods activated at the same time. In some cases, it will consider that two mods are incompatible with each other and prevent from activating the second one. In that case a message will warn the user on why the mod cannot be activated.
+  
+  Two mods will be considered incompatible if one (or more) of this proposition is true:
+  - Both mods contain scripts
+  - Both mods modify the same file (except for the CDB)
+  - Both mods modify the same line of the CDB
+    
+  A mod can only be activated when creating a new save or restarting a run from prison start.
+
+  For now, with each update (even minor ones) mods will be deactivated and current saves using mods will be reset (only the run, not meta items). This is to prevent the game from crashing and/or corrupt the saves.
+
+  ### 模組在遊戲中的加載和行為
+  遊戲支持同時加載複數模組，但在特殊情況中，遊戲會認為兩個(或多個)模組互不兼容，並阻止加載其中一個模組，系統將會輸出訊息提示模組為何無法加載。
+
+  若以下條件中有一個(或多個)成立，兩個模組就會被視為不兼容：
+  - 兩個模組都包含腳本。
+  - 兩個模組修改了相同的檔案(CDB 檔案除外)。
+  - 兩個模組修改了 CDB 中的同一行程式。
+
+  模組只能在創建新存檔或從監獄重新開始遊戲時激活。
