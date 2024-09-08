@@ -130,7 +130,6 @@ There is a major difference between the flow for altering data and creating some
   - atlas/ui.atlas
   - atlas/fxCommon.atlas
   - atlas/ui.atlas
-  - atlas/fxCommon.atlas
   - atlas/fxEnemy.atlas
   - atlas/fxWeapon.atlas
   - atlas/fxDisplace.atlas
@@ -158,7 +157,6 @@ There is a major difference between the flow for altering data and creating some
   - atlas/ui.atlas
   - atlas/fxCommon.atlas
   - atlas/ui.atlas
-  - atlas/fxCommon.atlas
   - atlas/fxEnemy.atlas
   - atlas/fxWeapon.atlas
   - atlas/fxDisplace.atlas
@@ -183,7 +181,7 @@ There is a major difference between the flow for altering data and creating some
 # Tools list
 Except for castleDB, the tools presented are command line tools.
 
-They accept - and / at the start of arguments. Argument names are NOT case sensitive.
+They accept ``` - ``` and ``` / ``` at the start of arguments. Argument names are NOT case sensitive.
 
 Order of arguments is not important (as long as you respect the order -argument <parameter> ):
 
@@ -196,7 +194,27 @@ is equivalent to
 -ATLAS "C:\Tests\Expanded\atlas\kingsGuardian.atlas" -OUTDIR "C:\Tests\ExpandedAtlas\kingsGuardian\" -EXPAND
 ```
 
+To run the tools you need to install (or already have installed) the .NET Framework version 4.5.2 or above. You can find it on Microsoft site here: https://www.microsoft.com/fr-fr/download/details.aspx?id=42642.
+
 ## 工具列表
+除了 CastleDB 之外，所介紹的工具都是命令列工具。
+
+工具接受以 ``` - ``` 或 ``` / ``` 開頭的參數。參數名稱不需區分大小寫。
+
+參數的順序並無規定（只須要遵守 -參數 <參數值> 的順序即可）：
+
+範例:
+```
+-EXPAND -OUTDIR "C:\Tests\ExpandedAtlas\kingsGuardian\" -ATLAS "C:\Tests\Expanded\atlas\kingsGuardian.atlas"
+```
+等同於:
+```
+-ATLAS "C:\Tests\Expanded\atlas\kingsGuardian.atlas" -OUTDIR "C:\Tests\ExpandedAtlas\kingsGuardian\" -EXPAND
+```
+
+要運行這些工具，你需要安裝「.NET Framework」版本 4.5.2 或更高版本（如果你的電腦尚未安裝）。你可以在 Microsoft 的網站上找到它：https://www.microsoft.com/fr-fr/download/details.aspx?id=426
+
+
 
 
 
